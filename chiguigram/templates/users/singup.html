@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+
+{% block head_content %}
+    <title>Sing Up!</title>    
+{% endblock head_content %}
+
+
+{% block container %}
+    
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
+        
+    <form action="{% url 'users:singup' %}" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Username", name="username" required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Password" name="password"  required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Confirm password" name="password_confirmation"
+                   required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="First Name", name="first_name"  required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Last Name", name="last_name"  required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email", name="email" required="true">
+        </div>
+
+        <button class="btn btn-primary btn-block mt-5" type="submit">Sign Up!</button>
+
+    </form>
+{% endblock container %}
